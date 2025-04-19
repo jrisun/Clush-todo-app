@@ -1,7 +1,7 @@
 import TodoItem from "./TodoItem";
 import './TodoListGroup.css';
 
-const TodoListGroup = ({ todos }) => {
+const TodoListGroup = ({ todos, onUpdate }) => {
     const fixedList = todos.filter(todo => todo.isFixed && !todo.isCompleted);
     const activeList = todos.filter(todo => !todo.isFixed && !todo.isCompleted);
     const completedList = todos.filter(todo => todo.isCompleted);
@@ -13,7 +13,7 @@ const TodoListGroup = ({ todos }) => {
                 <div className="todo-pin">
                     <ul className="todo-pin-list todo-list">
                         {fixedList.map(todo => (
-                            <TodoItem key={todo.id} todo={todo} />
+                            <TodoItem key={todo.id} todo={todo} onUpdate={onUpdate} />
                         ))}
                     </ul>
                 </div>
@@ -22,7 +22,7 @@ const TodoListGroup = ({ todos }) => {
                 <div className="todo-task">
                     <ul className="todo-task-list todo-list">
                         {activeList.map(todo => (
-                            <TodoItem key={todo.id} todo={todo} />
+                            <TodoItem key={todo.id} todo={todo} onUpdate={onUpdate} />
                         ))}
                     </ul>
                 </div>
@@ -35,7 +35,7 @@ const TodoListGroup = ({ todos }) => {
                     </div>
                     <ul className="todo-completed-list todo-list">
                         {completedList.map(todo => (
-                            <TodoItem key={todo.id} todo={todo} showCompletedDate />
+                            <TodoItem key={todo.id} todo={todo} onUpdate={onUpdate} showCompletedDate />
                         ))}
                     </ul>
                 </div>

@@ -25,7 +25,7 @@ const IndexPage = () => {
     return (
         <BasicLayout>
             <TodoInput onAdd={handleAddTodo} />
-            <TodoListGroup todos={todoList} />
+            <TodoListGroup todos={todoList} onUpdate={fetchTodoList}/>
         </BasicLayout>
     );
 }
