@@ -1,4 +1,12 @@
 const Header = () => {
+    const now = new Date();
+
+    const formattedDate = new Intl.DateTimeFormat('ko-KR', {
+        month: 'long',
+        day: 'numeric',
+        weekday: 'long'
+    }).format(now);
+
     return (
         <header className="header">
             <div className="container">
@@ -9,7 +17,7 @@ const Header = () => {
                     </div>
                 </div>
                 <div className="date">
-                    4월 19일<i class="bi bi-dot"></i>토요일
+                    {formattedDate}
                 </div>
             </div>
         </header>

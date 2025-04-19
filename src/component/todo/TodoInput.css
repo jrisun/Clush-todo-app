@@ -1,0 +1,12 @@
+.todo-editor {
+    padding: 1.5rem 0;
+    /* border-top: 1px solid #d6d6d6; */
+}
+.todo-editor .container {
+    display: flex;
+}
+.todo-editor .todo-input { flex: 1}
+.todo-editor .todo-btn {
+    margin-left: 10px;
+    padding: 0 8px;
+}

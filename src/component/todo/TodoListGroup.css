@@ -1,0 +1,67 @@
+/* 목록 공통 */
+.todo-list .todo-item {
+    display: flex;
+    padding: 0.8rem;
+}
+.todo-list .todo-item .todo-check {
+    margin-top: 0.1rem;
+    margin-right: 0.5rem;
+}
+.todo-list .todo-item .todo-content {
+    flex: 1;
+    padding: 3px 0;
+    font-size: 14px;
+    line-height: 1.3;
+}
+.todo-list .todo-item .todo-control {
+    margin-left: auto;
+    cursor: pointer;
+}
+.todo-list .todo-item .todo-control span {
+    font-weight: 300;
+}
+
+/* 고정 목록 */
+.todo-box .todo-pin {
+    padding: 5px 0;
+    border-radius: 10px;
+    background-color: #FFF2D4;
+}
+.todo-pin-list .todo-item {
+    font-weight: 500;
+}
+
+/* 할일 목록 */
+.todo-task-list .todo-item {
+    /* padding-top: 0.9rem;
+    padding-bottom: 0.9rem; */
+    border-bottom: 1px solid #e7e7e8;
+}
+
+/* 완료 목록 */
+.todo-box .todo-completed {
+    margin-top: 1.2rem;
+}
+.todo-box .todo-completed .todo-tab {
+    display: flex;
+    align-items: center;
+    padding: 0.3rem 0;
+}
+.todo-box .todo-completed .todo-tab .title {
+    padding-left: 1rem;
+}
+.todo-box .todo-completed-list {
+    margin-top: 0.5rem;
+}
+.todo-completed-list .todo-item {
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
+.todo-completed-list .todo-item .todo-content .description {
+    text-decoration: line-through;
+}
+.todo-completed-list .todo-item .todo-content .completed-date {
+    margin-top: 0.2rem;
+    font-size: 12px;
+    color: #555;
+}
