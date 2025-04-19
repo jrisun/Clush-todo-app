@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import BasicLayout from "../../layouts/BasicLayout"
 import { getTodoList, postTodo } from "../../api/todoApi";
-import TodoInput from "../../component/todo/TodoInput";
-import TodoListGroup from "../../component/todo/TodoListGroup";
+import TodoInput from "../../components/todo/TodoInput";
+import TodoListGroup from "../../components/todo/TodoListGroup";
 
 const IndexPage = () => {
 
