@@ -1,0 +1,12 @@
+/* 변수 정의 */
+
+:root {
+    --color-primary: #FF9A24;       /* 노랑 (메인) */
+    --color-dark: #333;
+    --font-base: 'Noto Sans KR', sans-serif;
+    /* --spacing: 1rem; */
+    --color-primary-light: #FFCF60; /* 강조 노랑 (밝음) */
+    --color-primary-bg: #FFF2D4;    /* 배경용 연노랑 */
+    --color-navy: #00526B;          /* 메인 포인트 남색 */
+    --color-gray-light: #e7e7e8;    /* 라이트 그레이 */
+}

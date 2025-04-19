@@ -1,0 +1,101 @@
+/* 공통 css */
+html,
+body,
+#root {
+    height: 100%
+}
+
+.wrapper {
+    overflow: hidden;
+    position: relative;
+    max-width: 520px;
+    margin: 0 auto;
+    background-color: #fff;
+    min-height: 100%;
+    box-shadow: 0 0 10px #0000000d;
+}
+
+.container {
+    max-width: 1440px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+@media (max-width:1170px) {
+    .container {
+        padding: 0 15px
+    }
+}
+@media (max-width:768px) {
+    .container {
+        padding: 0 10px
+    }
+}
+
+.hidden {
+    visibility: hidden;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0
+}
+
+/* 폼 */
+.input-box {
+    padding: 8px 15px;
+    border: 1px solid #e7e7e8;
+    border-radius: 3px;
+    font-size: 14px;
+}
+.btn-box {
+    border-radius: 3px;
+}
+.btn-box-primary {
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+.checkbox-custom {
+    appearance: none; /* 기본(네이티브) 모양을 제거 */
+    background-clip: content-box;
+    padding: 0.2em;
+    width: 17px;
+    height: 17px;
+    border: 1px solid #888;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.checkbox-custom:checked {
+    border-color: var(--color-navy);
+    background-color: var(--color-navy);
+}
+
+/* 헤더 */
+.header {
+    padding: 2rem 0 1.5rem;
+}
+.header .title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding: 1rem 0;
+}
+.header .title h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+}
+.header .title .util { 
+    margin-left: auto; 
+    cursor: pointer;
+}
+.header .date {
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--color-navy);
+}
+
+/* 푸터 */
+.footer {
+    padding: 2rem 0;
+}
