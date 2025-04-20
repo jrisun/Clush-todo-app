@@ -1,7 +1,7 @@
 import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
 
-const Loading = <div>Loading...</div>;
+const Loading = "";
 const Todo = lazy(() => import("../pages/todo/IndexPage"));
 
 const root = createBrowserRouter([

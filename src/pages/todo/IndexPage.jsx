@@ -4,6 +4,7 @@ import { getTodoList, postTodo } from "../../api/todoApi";
 import TodoInput from "../../components/todo/TodoInput";
 import TodoListGroup from "../../components/todo/TodoListGroup";
 import TodoEditModal from "../../components/todo/TodoEditModal";
+import TodoSummary from "../../components/todo/TodoSummary";
 
 const initEditTodo = {
     id: 0,
@@ -42,6 +43,7 @@ const IndexPage = () => {
 
     return (
         <BasicLayout>
+            <TodoSummary />
             <TodoInput onAdd={handleAddTodo} />
             {todoList.length > 0 ? (
                 <TodoListGroup todos={todoList} onUpdate={fetchTodoList} onEdit={setEditTodo} />

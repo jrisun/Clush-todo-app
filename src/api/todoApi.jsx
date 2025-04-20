@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const API_SERVER_HOST = "http://www.clearline.click:8100";
+export const API_SERVER_HOST = "https://todo-api.clearline.click";
 const prefix = `${API_SERVER_HOST}/api/todo`;
 
 export const getTodoList = async () => {
@@ -38,5 +38,10 @@ export const postTodoUnComplete = async (id, isCompleted) => {
 
 export const deleteTodo = async (id) => {
     const result = await axios.delete(`${prefix}/${id}`, id);
+    return result.data;
+}
+
+export const summaryTodo = async () => {
+    const result = await axios.get(`${prefix}/summary`);
     return result.data;
 }

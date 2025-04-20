@@ -14,12 +14,19 @@ const TodoInput = ({ onAdd }) => {
         setInputDescription(initDescription);
     };
 
+    const handleKeydown = (e) => {
+        if(e.key === 'Enter') {
+            handleSubmitTodo();
+        }
+    }
+
     return (
         <div className="todo-editor">
             <div className="container">
                 <input type="text" 
                     name="description" 
                     onChange={handleChange} 
+                    onKeyDown={handleKeydown}
                     value={inputDescription} 
                     className="todo-input input-box" 
                     placeholder="할 일 추가하기"

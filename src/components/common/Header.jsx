@@ -12,9 +12,9 @@ const Header = () => {
             <div className="container">
                 <div className="title">
                     <h1>할 일 목록</h1>
-                    <div className="util">
+                    {/* <div className="util">
                         <span className="material-symbols-outlined">segment</span>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="date">
                     {formattedDate}
