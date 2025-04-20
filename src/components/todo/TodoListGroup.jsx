@@ -1,18 +1,18 @@
 import TodoItem from "./TodoItem";
 import './TodoListGroup.css';
 
-const TodoListGroup = ({ todos, onUpdate }) => {
+const TodoListGroup = ({ todos, onUpdate, onEdit }) => {
     const fixedList = todos.filter(todo => todo.isFixed && !todo.isCompleted)
                             .map(todo => (
-                                <TodoItem key={todo.id} todo={todo} onUpdate={onUpdate} />
+                                <TodoItem key={todo.id} todo={todo} onUpdate={onUpdate} onEdit={onEdit}/>
                             ));
     const activeList = todos.filter(todo => !todo.isFixed && !todo.isCompleted)
                             .map(todo => (
-                                <TodoItem key={todo.id} todo={todo} onUpdate={onUpdate} />
+                                <TodoItem key={todo.id} todo={todo} onUpdate={onUpdate} onEdit={onEdit}/>
                             ));
     const completedList = todos.filter(todo => todo.isCompleted)
                             .map(todo => (
-                                <TodoItem key={todo.id} todo={todo} onUpdate={onUpdate} isCompleted />
+                                <TodoItem key={todo.id} todo={todo} onUpdate={onUpdate} onEdit={onEdit} isCompleted/>
                             ));
 
     return (
@@ -45,6 +45,6 @@ const TodoListGroup = ({ todos, onUpdate }) => {
             </div>
         </div>
     );
-}
+};
 
 export default TodoListGroup;

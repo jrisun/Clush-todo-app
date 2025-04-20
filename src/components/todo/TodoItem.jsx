@@ -1,6 +1,6 @@
 import { deleteTodo, postTodoComplete, postTodoPin, postTodoUnComplete, postTodoUnpin } from "../../api/todoApi";
 
-const TodoItem = ({ todo, onUpdate, isCompleted = false }) => {
+const TodoItem = ({ todo, onUpdate, onEdit, isCompleted = false }) => {
 
     const formatDate = new Date(todo.completedAt).toLocaleDateString("ko-KR", {
         month: "long",
@@ -71,11 +71,11 @@ const TodoItem = ({ todo, onUpdate, isCompleted = false }) => {
                         <i className={`bi ${todo.isFixed ? "bi-star-fill" : "bi-star"}`}></i>
                     </span>
                 )}
-                <span><i className="bi bi-pencil-square"></i></span>
+                <span onClick={() => onEdit(todo)}><i className="bi bi-pencil-square"></i></span>
                 <span onClick={handleDeleteTodo}><i className="bi bi-trash"></i></span>
             </div>
         </li>
     );
-}
+};
 
 export default TodoItem;

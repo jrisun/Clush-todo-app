@@ -1,0 +1,39 @@
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+}
+.modal {
+    width: 340px;
+    margin: 0 auto;
+    padding: 1.2rem 0.5rem;
+    border-radius: 8px;
+    background: #fff;
+    font-weight: 500;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+.modal .title {
+    margin-bottom: 1rem;
+}
+.modal .modal-input .input-box{
+    width: 100%;
+}
+.modal .modal-btn{
+    display: flex;
+    margin-top: 0.5rem;
+}
+.modal .modal-btn .btn-box {
+    flex: 1;
+    padding: 0.6rem 1rem;
+    font-size: 14px;
+}
+.modal .modal-btn .btn-box + .btn-box {
+    margin-left: 0.5rem;
+}
