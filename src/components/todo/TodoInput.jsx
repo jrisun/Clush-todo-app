@@ -9,7 +9,7 @@ const TodoInput = ({ onAdd }) => {
     const handleChange = (e) => setInputDescription(e.target.value);
 
     const handleSubmitTodo = () => {
-        if (!inputDescription.trim()) return "할 일은 공백일 수 없습니다."; // 메시지 안내 필요
+        if (!inputDescription.trim()) return alert("할 일은 공백일 수 없습니다.");
         onAdd({ description: inputDescription });
         setInputDescription(initDescription);
     };
