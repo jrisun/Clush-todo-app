@@ -28,12 +28,28 @@ const IndexPage = () => {
         fetchTodoList();
     };
 
+    const EmptyList = () => {
+        return (
+            <div className="empty-list">
+                <div className="container">
+                    <div className="empty-icon material-symbols-outlined">add_task</div>
+                    <p className="empty-title">아직 할 일이 없음</p>
+                    <p className="empty-text">완료해야 하는 작업을 추가하세요.</p>
+                </div>
+            </div>
+        );
+    };
+
     return (
         <BasicLayout>
             <TodoInput onAdd={handleAddTodo} />
-            <TodoListGroup todos={todoList} onUpdate={fetchTodoList} onEdit={setEditTodo}/>
+            {todoList.length > 0 ? (
+                <TodoListGroup todos={todoList} onUpdate={fetchTodoList} onEdit={setEditTodo} />
+            ) : (
+                <EmptyList />
+            )}
             {editTodo.id != 0 && (
-                <TodoEditModal todo={editTodo} onUpdate={fetchTodoList} onClose={() => setEditTodo(initEditTodo)}/>
+                <TodoEditModal todo={editTodo} onUpdate={fetchTodoList} onClose={() => setEditTodo(initEditTodo)} />
             )}
         </BasicLayout>
     );

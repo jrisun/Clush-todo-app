@@ -99,3 +99,23 @@ body,
 .footer {
     padding: 2rem 0;
 }
+
+/* 빈 목록 */
+.empty-list {
+    padding: 2rem 0;
+    line-height: 1.3;
+    text-align: center;
+}
+.empty-list .empty-icon {
+    font-size: 50px;
+    color: #ccc;
+}
+.empty-list .empty-title {
+    margin-top: 1rem;
+    font-weight: 500;
+}
+.empty-list .empty-text {
+    margin-top: 0.5rem;
+    font-size: 14px;
+    color: #555;
+}
