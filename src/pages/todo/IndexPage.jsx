@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import BasicLayout from "../../layouts/BasicLayout"
-import { getTodoList, createTodo } from "../../api/todoApi";
-import TodoInput from "../../components/todo/TodoInput";
+import { getTodoList, createTodo, updateTodo, deleteTodo, unpinTodo, pinTodo, uncompleteTodo, completeTodo } from "../../api/todoApi";
+import TodoEditor from "../../components/todo/TodoEditor";
 import TodoListGroup from "../../components/todo/TodoListGroup";
 import TodoEditModal from "../../components/todo/TodoEditModal";
 import TodoSummary from "../../components/todo/TodoSummary";
@@ -12,12 +12,16 @@ const initEditTodo = {
 };
 
 const IndexPage = () => {
-    const [todoList, setTodoList] = useState([]);
-    const [editTodo, setEditTodo] = useState(initEditTodo);
+    const [todoList, setTodoList] = useState([]); // 전체 할 일 목록
+    const [editTodo, setEditTodo] = useState(initEditTodo); // 수정할 할 일
 
     const fetchTodoList = async () => {
-        const res = await getTodoList();
-        setTodoList(res.data);
+        try {
+            const response = await getTodoList();
+            setTodoList(response.data);
+        } catch (error) {
+            console.error("할 일 목록 불러오기 실패", error);
+        }
     };
 
     useEffect(() => {
@@ -25,9 +29,69 @@ const IndexPage = () => {
     }, []);
 
     const handleAddTodo = async (todoObj) => {
-        await createTodo(todoObj);
-        fetchTodoList();
+        try {
+            await createTodo(todoObj);
+            fetchTodoList();
+        } catch (error) {
+            console.error("할 일 생성 실패", error);
+        }
     };
+
+    const handleOpenModal = (todo) => {
+        setEditTodo(todo);
+    }
+
+    const handleEditTodo = async (todoObj) => {
+        try {
+            await updateTodo(todoObj.id, todoObj);
+            fetchTodoList();
+            setEditTodo(initEditTodo);
+        } catch (error) {
+            console.error("할 일 수정 실패", error);
+        }
+    }
+
+    const handleTogglePin = async (id, isFixed) => {
+        try {
+            if(isFixed) {
+                await unpinTodo(id, false);
+            } else {
+                await pinTodo(id, true);
+            }
+            fetchTodoList();
+        } catch (error) {
+            console.error("할 일 고정 처리 실패", error);
+        }
+    }
+
+    const handleToggleComplete = async (id, isCompleted) => {
+        try {
+            if(isCompleted) {
+                await uncompleteTodo(id, false);
+            } else {
+                await completeTodo(id, true);
+            }
+            fetchTodoList();
+        } catch (error) {
+            console.error("할 일 완료 처리 실패", error);
+        }
+    }
+
+    const handleDeleteTodo = async (id) => {
+        try {
+            await deleteTodo(id);
+            fetchTodoList();
+        } catch (error) {
+            console.error("할 일 삭제 실패", error);
+        }
+    }
+
+    const actions = {
+        onPin: handleTogglePin,
+        onComplete: handleToggleComplete,
+        onOpenModal: handleOpenModal,
+        onDelete: handleDeleteTodo
+    }
 
     const EmptyList = () => {
         return (
@@ -44,14 +108,14 @@ const IndexPage = () => {
     return (
         <BasicLayout>
             <TodoSummary />
-            <TodoInput onAdd={handleAddTodo} />
+            <TodoEditor onAdd={handleAddTodo} />
             {todoList.length > 0 ? (
-                <TodoListGroup todos={todoList} onUpdate={fetchTodoList} onEdit={setEditTodo} />
+                <TodoListGroup todos={todoList} actions={actions} />
             ) : (
                 <EmptyList />
             )}
             {editTodo.id != 0 && (
-                <TodoEditModal todo={editTodo} onUpdate={fetchTodoList} onClose={() => setEditTodo(initEditTodo)} />
+                <TodoEditModal todo={editTodo} onEdit={handleEditTodo} onCancel={() => setEditTodo(initEditTodo)} />
             )}
         </BasicLayout>
     );

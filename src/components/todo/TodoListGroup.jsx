@@ -1,22 +1,20 @@
 import TodoItem from "./TodoItem";
 import './TodoListGroup.css';
 
-const TodoListGroup = ({ todos, onUpdate, onEdit }) => {
-    const fixedList = todos.filter(todo => todo.isFixed && !todo.isCompleted)
-                            .map(todo => (
-                                <TodoItem key={todo.id} todo={todo} onUpdate={onUpdate} onEdit={onEdit}/>
-                            ));
-    const activeList = todos.filter(todo => !todo.isFixed && !todo.isCompleted)
-                            .map(todo => (
-                                <TodoItem key={todo.id} todo={todo} onUpdate={onUpdate} onEdit={onEdit}/>
-                            ));
-    const completedList = todos.filter(todo => todo.isCompleted)
-                            .map(todo => (
-                                <TodoItem key={todo.id} todo={todo} onUpdate={onUpdate} onEdit={onEdit} isCompleted/>
-                            ));
-    
+const TodoListGroup = ({ todos, actions }) => {
+    const renderList = (filterFn) =>
+        todos.filter(filterFn).map(todo => (
+            <TodoItem key={todo.id} todo={todo} actions={actions} />
+        ));
+ 
+    const fixedList = renderList(todo => todo.isFixed && !todo.isCompleted);
+    const activeList = renderList(todo => !todo.isFixed && !todo.isCompleted);
+    const completedList = renderList(todo => todo.isCompleted);
+
     const EmptyList = () => {
-        if(!(fixedList.length === 0 && activeList.length === 0)) return;
+        if(!(fixedList.length === 0 && activeList.length === 0)) {
+            return;
+        }
 
         return (
             <div className="empty-list">
