@@ -8,30 +8,30 @@ export const getTodoList = async () => {
     return result.data;
 }
 
-export const postTodo = async (todoObj) => {
+export const createTodo = async (todoObj) => {
     const result = await axios.post(`${prefix}`, todoObj);
     return result.data;
 }
 
-export const patchTodo = async (id, todoObj) => {
+export const updateTodo = async (id, todoObj) => {
     const result = await axios.patch(`${prefix}/${id}`, todoObj);
     return result.data;
 }
 
-export const postTodoPin = async (id, isFixed) => {
+export const pinTodo = async (id, isFixed) => {
     const result = await axios.post(`${prefix}/${id}/pin`, {isFixed});
     return result.data;
 }
-export const postTodoUnpin = async (id, isFixed) => {
+export const unpinTodo = async (id, isFixed) => {
     const result = await axios.post(`${prefix}/${id}/unpin`, {isFixed});
     return result.data;
 }
 
-export const postTodoComplete = async (id, isCompleted) => {
+export const completeTodo = async (id, isCompleted) => {
     const result = await axios.post(`${prefix}/${id}/complete`, {isCompleted});
     return result.data;
 }
-export const postTodoUnComplete = async (id, isCompleted) => {
+export const uncompleteTodo = async (id, isCompleted) => {
     const result = await axios.post(`${prefix}/${id}/uncomplete`, {isCompleted});
     return result.data;
 }

@@ -1,4 +1,4 @@
-import { deleteTodo, postTodoComplete, postTodoPin, postTodoUnComplete, postTodoUnpin } from "../../api/todoApi";
+import { deleteTodo, completeTodo, pinTodo, uncompleteTodo, unpinTodo } from "../../api/todoApi";
 
 const TodoItem = ({ todo, onUpdate, onEdit, isCompleted = false }) => {
 
@@ -11,9 +11,9 @@ const TodoItem = ({ todo, onUpdate, onEdit, isCompleted = false }) => {
     const handleTodoComplete = async () => {
         try {
             if (todo.isCompleted) {
-                await postTodoUnComplete(todo.id, false);
+                await uncompleteTodo(todo.id, false);
             } else {
-                await postTodoComplete(todo.id, true);
+                await completeTodo(todo.id, true);
             }
             onUpdate(); // 목록 새로고침
         } catch (e) {
@@ -24,9 +24,9 @@ const TodoItem = ({ todo, onUpdate, onEdit, isCompleted = false }) => {
     const handleTodoPin = async () => {
         try {
             if(todo.isFixed) {
-                await postTodoUnpin(todo.id, false);
+                await unpinTodo(todo.id, false);
             } else {
-                await postTodoPin(todo.id, true);
+                await pinTodo(todo.id, true);
             }
             onUpdate();
         } catch (e) {

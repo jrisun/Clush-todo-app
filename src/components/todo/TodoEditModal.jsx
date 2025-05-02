@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { patchTodo } from "../../api/todoApi";
+import { updateTodo } from "../../api/todoApi";
 import "./TodoEditModal.css";
 
 const TodoEditModal = ({ todo, onClose, onUpdate }) => {
@@ -9,7 +9,7 @@ const TodoEditModal = ({ todo, onClose, onUpdate }) => {
         if (!description.trim()) return alert("할 일은 공백일 수 없습니다.");
 
         try {
-            await patchTodo(todo.id, { description });
+            await updateTodo(todo.id, { description });
             onUpdate();
             onClose();
         } catch (e) {

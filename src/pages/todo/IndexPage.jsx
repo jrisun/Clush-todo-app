@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import BasicLayout from "../../layouts/BasicLayout"
-import { getTodoList, postTodo } from "../../api/todoApi";
+import { getTodoList, createTodo } from "../../api/todoApi";
 import TodoInput from "../../components/todo/TodoInput";
 import TodoListGroup from "../../components/todo/TodoListGroup";
 import TodoEditModal from "../../components/todo/TodoEditModal";
@@ -25,7 +25,7 @@ const IndexPage = () => {
     }, []);
 
     const handleAddTodo = async (todoObj) => {
-        await postTodo(todoObj);
+        await createTodo(todoObj);
         fetchTodoList();
     };
 
