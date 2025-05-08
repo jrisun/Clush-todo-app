@@ -30,6 +30,7 @@
 .todo-summary .summary-box .summary{
     padding: 0 1rem;
     line-height: 1.3;
+    white-space: pre-line;
 }
 .todo-summary .summary-box .refresh-btn{
     position: absolute;

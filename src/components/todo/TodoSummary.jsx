@@ -8,6 +8,8 @@ const TodoSummary = () => {
     const [summary, setSummary] = useState(initSummary);
     const [loading, setLoading] = useState(false);
 
+    const cleanedSummary = summary.replace(/\n{2,}/g, "\n");
+
     // AI 요약 요청
     const loadSummary = async () => {
         if (loading) return; // 중복 요청 방지
@@ -47,7 +49,7 @@ const TodoSummary = () => {
                     <div className="summary">
                         {loading ? 
                             <span className="loading-dots">메시지 생성 중</span>
-                        : summary}
+                        : cleanedSummary}
                     </div>
                 </div>
             </div>
